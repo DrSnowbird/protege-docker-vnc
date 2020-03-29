@@ -1,15 +1,19 @@
 # Protégé Desktop Docker running over VNC/NoVNC
-[![](https://images.microbadger.com/badges/image/openkbs/protege-docker-x11.svg)](https://microbadger.com/images/openkbs/protege-docker-x11 "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/openkbs/protege-docker-x11.svg)](https://microbadger.com/images/openkbs/protege-docker-x11 "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/openkbs/protege-docker-vnc.svg)](https://microbadger.com/images/openkbs/protege-docker-vnc "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/openkbs/protege-docker-x11.svg)](https://microbadger.com/images/openkbs/protege-docker-vnc "Get your own version badge on microbadger.com")
 Desktop version Stanford Ontology IDE
 * Protégé version 5.5 (The latest release)
 
 # Components
-* openjdk version "1.8.0_232"
-  OpenJDK Runtime Environment (build 1.8.0_232-8u232-b09-0ubuntu1~18.04.1-b09)
-  OpenJDK 64-Bit Server VM (build 25.232-b09, mixed mode)
-* Apache Maven 3.5.3
-* Python 3.5.2
-* Other tools: git wget unzip vim python python-setuptools python-dev python-numpy 
+* Ubuntu 18.04 LTS now and we will use Ubuntu 20.04 on or about 2020-04-15 as LTS Docker base image.
+* openjdk version "1.8.0_242"
+  OpenJDK Runtime Environment (build 1.8.0_242-8u242-b08-0ubuntu3~18.04-b08)
+  OpenJDK 64-Bit Server VM (build 25.242-b08, mixed mode)
+* Apache Maven 3.6
+* Python 3.6 / Python 2.7 + pip 19 + Python3 virtual environments (venv, virtualenv, virtualenvwrapper, mkvirtualenv, ..., etc.)
+* Node v13 + npm 6 (from NodeSource official Node Distribution)
+* Gradle 6
+* Other tools: git wget unzip vim python python-setuptools python-dev python-numpy, ..., etc.
+* VNC/noVNC for remote Desktop over Container Platform (Openshift, Kubernetes, etc.) 
 
 # Run (Recommended for easy starting-up)
 This will setup all the needed host directory to ensure Protégé configurations being persistent for next run.
@@ -44,7 +48,7 @@ ${HOME}/protege-x11/plugins
 
 # Versions (in this build)
 ```
-developer@c5aacce91dbc:~$ /usr/scripts/printVersions.sh 
+developer@1126ad351900:~$ /usr/scripts/printVersions.sh 
 + echo JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 + java -version
@@ -56,7 +60,7 @@ Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
 Maven home: /usr/apache-maven-3.6.3
 Java version: 1.8.0_232, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
 Default locale: en_US, platform encoding: UTF-8
-OS name: "linux", version: "5.3.0-40-generic", arch: "amd64", family: "unix"
+OS name: "linux", version: "5.3.0-42-generic", arch: "amd64", family: "unix"
 + python -V
 Python 2.7.15+
 + python3 -V
@@ -95,7 +99,7 @@ Kotlin:       1.3.50
 Groovy:       2.5.8
 Ant:          Apache Ant(TM) version 1.10.7 compiled on September 1 2019
 JVM:          1.8.0_232 (Private Build 25.232-b09)
-OS:           Linux 5.3.0-40-generic amd64
+OS:           Linux 5.3.0-42-generic amd64
 
 + npm -v
 6.13.4
