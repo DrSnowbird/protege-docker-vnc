@@ -34,12 +34,10 @@ USER ${USER}
 #ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
 #CMD ["--wait"]
 
-########################
-#### ---- KNIME ----####
-########################
 ###########################################################################
 #### ---- Protege Specifics: Setup                               ---- #####
 ###########################################################################
+RUN sudo apt install -y graphviz
 
 RUN sudo mkdir -p ${HOME}/.Protege ${PROTEGE_WORKSPACE} ${PROTEGE_PLUGIN} 
     

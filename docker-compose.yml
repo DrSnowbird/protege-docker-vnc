@@ -17,5 +17,5 @@ services:
     volumes:
       - ./workspace:/home/developer/workspace
       - ./data:/home/developer/data
-      -./.Protege:/home/developer/.Protege
+      - ./.Protege:/home/developer/.Protege
 
