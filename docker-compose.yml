@@ -9,13 +9,25 @@ services:
     environment:
       - USER_ID=${USER_ID:-1000}
       - GROUP_ID=${GROUP_ID:-1000}
-    #env_file:
-    #  - ./.env
+    env_file:
+      - ./.env
     ports:
       - 5901:5901
-      - 6901:5601
+      - 6901:6901
     volumes:
-      - ./workspace:/home/developer/workspace
-      - ./data:/home/developer/data
       - ./.Protege:/home/developer/.Protege
+      - ./plugins:/home/developer/Protege/plugins
+      - ./data:/home/developer/data
+      - ./workspace:/home/developer/workspace
+      ## -- Uncomment the following and comment above to use `pwd`
+      ## -- And, create directories using "mkdir -p .Protege Workspace Plugin"
+      #- ${PWD}/.Protege:/home/developer/.Protege
+      #- ${PWD}/Plugins:/home/developer/Protege/plugins
+      #- ${PWD}/data:/home/developer/data
+      #- ${PWD}/workspace:/home/developer/workspace
+      ## -- Uncomment the following and comment above to use `${HOME}/....`
+      #- ${HOME}/data-docker/protege-docker-vnc/.Protege:/home/developer/.Protege
+      #- ${HOME}/data-docker/protege-docker-vnc/plugins:/home/developer/Protege/plugins
+      #- ${HOME}/data-docker/protege-docker-vnc/data:/home/developer/data
+      #- ${HOME}/data-docker/protege-docker-vnc/workspace:/home/developer/workspace
 
