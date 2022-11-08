@@ -15,7 +15,7 @@ WORKDIR ${HOME}
 ARG PROTEGE_TGZ_URL=https://github.com/protegeproject/protege-distribution/releases/download/v${PROTEGE_VERSION}/Protege-${PROTEGE_VERSION}-linux.tar.gz
 
 ENV PROTEGE_HOME=${HOME}/Protege-${PROTEGE_VERSION}
-RUN wget -c ${PROTEGE_TGZ_URL}
+RUN wget --no-check-certificate -c ${PROTEGE_TGZ_URL}
 RUN tar xvfz $(basename ${PROTEGE_TGZ_URL}) && \
     ln -s ${PROTEGE_HOME} $HOME/Protege && \
     cd ${PROTEGE_HOME} && \
@@ -37,7 +37,13 @@ USER ${USER}
 ###########################################################################
 #### ---- Protege Specifics: Setup                               ---- #####
 ###########################################################################
-RUN sudo apt install -y graphviz
+RUN wget --no-check-certificate -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+
+RUN curl https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo sh -c 'gpg --dearmor > /usr/share/keyrings/google-chrome-keyring.gpg'
+
+
+RUN sudo apt-get update -y && \
+    sudo apt install -y graphviz
 
 RUN sudo mkdir -p ${HOME}/.Protege ${PROTEGE_WORKSPACE} ${PROTEGE_PLUGIN} 
     
