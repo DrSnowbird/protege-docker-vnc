@@ -39,7 +39,7 @@ USER ${USER}
 ###########################################################################
 RUN wget --no-check-certificate -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
-RUN curl https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo sh -c 'gpg --dearmor > /usr/share/keyrings/google-chrome-keyring.gpg'
+RUN curl -k https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo sh -c 'gpg --dearmor > /usr/share/keyrings/google-chrome-keyring.gpg'
 
 
 RUN sudo apt-get update -y && \
